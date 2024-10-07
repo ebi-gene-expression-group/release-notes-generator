@@ -27,6 +27,14 @@ ext {
 	set('springCloudVersion', "2023.0.3")
 }
 
+jar {
+	manifest {
+		attributes(
+				'Main-Class': 'uk.ac.ebi.atlas.releasenotes.ReleaseNotesApplication'
+		)
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'info.picocli:picocli:4.6.2'
