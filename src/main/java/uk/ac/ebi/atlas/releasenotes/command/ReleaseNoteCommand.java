@@ -20,6 +20,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @CommandLine.Command(name = "release_notes", mixinStandardHelpOptions = true)
 public class ReleaseNoteCommand implements Callable<Integer> {
+
+    private static final String MD_SECTION_BREAK = "\n\n";
+
     private enum OutputFormat {
         MARKDOWN, HTML
     }
@@ -141,16 +144,16 @@ public class ReleaseNoteCommand implements Callable<Integer> {
                 .append(releaseVersion != null ? " - " + releaseVersion : "");
 
         if (project.description() != null && !project.description().isBlank()) {
-            markdown.append("\n**").append(project.description()).append("**\n\n");
+            markdown.append("\n**").append(project.description()).append("**");
         }
 
-        markdown.append("##⭐ New Features\n");
+        markdown.append(MD_SECTION_BREAK + "##⭐ New Features\n");
         markdown.append(filterAndFormatCommits(commits, "Merge"));
 
-        markdown.append("##\uD83D\uDC1E Bug Fixes\n");
+        markdown.append(MD_SECTION_BREAK + "##\uD83D\uDC1E Bug Fixes\n");
         markdown.append(filterAndFormatCommits(commits, "Fix"));
 
-        markdown.append("##\uD83D\uDCA1 Other Changes\n");
+        markdown.append(MD_SECTION_BREAK + "##\uD83D\uDCA1 Other Changes\n");
         markdown.append(filterAndFormatCommits(commits, null));
 
         return markdown.toString();
