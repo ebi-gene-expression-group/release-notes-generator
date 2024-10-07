@@ -196,7 +196,7 @@ public class ReleaseNoteCommand implements Callable<Integer> {
         return commits.subList(latestCommitIdx, earliestCommitIdx + 1);
     }
 
-    public static <T> int findFirstIndex(List<? extends T> commits, Predicate<? super T> pastStart) {
+    private static <T> int findFirstIndex(List<? extends T> commits, Predicate<? super T> pastStart) {
         for (int i = 0; i < commits.size(); i++) {
             if (pastStart.test(commits.get(i))) {
                 return i;
@@ -205,7 +205,7 @@ public class ReleaseNoteCommand implements Callable<Integer> {
         return -1;
     }
 
-    public static <T> int findLastIndex(List<? extends T> commits, Predicate<? super T> pastEnd) {
+    private static <T> int findLastIndex(List<? extends T> commits, Predicate<? super T> pastEnd) {
         for (int i = commits.size() - 1; i > -1; i--) {
             if (pastEnd.test(commits.get(i))) {
                 return i;
