@@ -58,13 +58,7 @@ public class ReleaseNotesApplication {
 		exit(exitCode);
 	}
 
-//	public static void main(String... args) {
-//		configureLogback();
-//		int exitCode = new CommandLine(new ReleaseNoteCommand()).execute(args);
-//		exit(exitCode);
-//	}
-
-	static String getApiToken() {
+	public static String getApiToken() {
 		if (apiTokenCache != null) {
 			return apiTokenCache;
 		}

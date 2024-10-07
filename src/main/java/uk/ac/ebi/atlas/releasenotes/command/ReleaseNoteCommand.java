@@ -144,7 +144,7 @@ public class ReleaseNoteCommand implements Callable<Integer> {
             markdown.append("\n**").append(project.description()).append("**\n\n");
         }
 
-        markdown.append("##⭐  New Features\n");
+        markdown.append("##⭐ New Features\n");
         markdown.append(filterAndFormatCommits(commits, "Merge"));
 
         markdown.append("##\uD83D\uDC1E Bug Fixes\n");
